@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anyela Dávila · Back office y atención al cliente</title>
+<meta name="description" content="Portafolio de back office y atención al cliente de Anyela Dávila: casos, respuestas a clientes, control en Excel y procedimientos.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --ground:        #FAFAF8;
+    --surface:       #FFFFFF;
+    --surface-sunk:  #F2F2EE;
+    --ink:           #18202B;
+    --ink-soft:      #5A616B;
+    --ink-faint:     #8A9099;
+    --rule:          #E2E2DC;
+    --accent:        #1E8E5A;
+    --accent-soft:   #E7F3ED;
+    --warn:          #C77A17;
+    --warn-soft:     #FBF1E2;
+    --crit:          #B3402F;
+    --crit-soft:     #FBEAE7;
+
+    --display: 'Fraunces', Georgia, serif;
+    --body:    'IBM Plex Sans', system-ui, sans-serif;
+    --mono:    'IBM Plex Mono', 'Consolas', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:       #0E1722;
+      --surface:      #16202D;
+      --surface-sunk: #111A25;
+      --ink:          #EAEDF1;
+      --ink-soft:     #A2AAB6;
+      --ink-faint:    #6E7783;
+      --rule:         #253141;
+      --accent:       #4FBE87;
+      --accent-soft:  #16302440;
+      --warn:         #E0A250;
+      --warn-soft:    #33240F40;
+      --crit:         #E07A67;
+      --crit-soft:    #3A1B1540;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:       #0E1722;
+    --surface:      #16202D;
+    --surface-sunk: #111A25;
+    --ink:          #EAEDF1;
+    --ink-soft:     #A2AAB6;
+    --ink-faint:    #6E7783;
+    --rule:         #253141;
+    --accent:       #4FBE87;
+    --accent-soft:  #16302440;
+    --warn:         #E0A250;
+    --warn-soft:    #33240F40;
+    --crit:         #E07A67;
+    --crit-soft:    #3A1B1540;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-block: 72px 96px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (max-width: 520px) {
+    .wrap { padding-block: 44px 64px; padding-left: 18px; padding-right: 18px; }
+  }
+
+  /* ---------- encabezado ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(38px, 7vw, 56px);
+    line-height: 1.06;
+    letter-spacing: -.015em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .tagline {
+    font-size: clamp(18px, 2.6vw, 21px);
+    font-weight: 300;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    max-width: 52ch;
+    text-wrap: balance;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--ink-faint);
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .meta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  .meta a:hover, .meta a:focus-visible { border-bottom-color: var(--accent); }
+
+  /* ---------- secciones ---------- */
+  section { margin-top: 60px; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: -.01em;
+    margin: 0 0 6px;
+  }
+  .sub {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 24px;
+    max-width: 58ch;
+  }
+  p { max-width: 64ch; }
+
+  /* ---------- principios ---------- */
+  .principio {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 0 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .principio:first-of-type { border-top: 1px solid var(--rule); }
+  .tick {
+    width: 21px; height: 21px; margin-top: 3px;
+    border-radius: 50%;
+    border: 1.6px solid var(--accent);
+    position: relative;
+  }
+  .tick::after {
+    content: ''; position: absolute;
+    left: 6.2px; top: 3.6px;
+    width: 5px; height: 9.5px;
+    border: solid var(--accent);
+    border-width: 0 1.8px 1.8px 0;
+    transform: rotate(43deg);
+  }
+  .principio h3 {
+    font-size: 16px; font-weight: 600; margin: 0 0 3px;
+  }
+  .principio p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  /* ---------- tira de casos ---------- */
+  .casos { border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--surface); }
+  .caso {
+    display: grid;
+    grid-template-columns: 108px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+  }
+  .caso:last-child { border-bottom: 0; }
+  .caso-id {
+    font-family: var(--mono); font-size: 12.5px;
+    color: var(--ink-faint); letter-spacing: -.01em;
+  }
+  .caso-t { color: var(--ink); }
+  .pill {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 2px; white-space: nowrap;
+  }
+  .p-alta  { background: var(--crit-soft);  color: var(--crit); }
+  .p-media { background: var(--warn-soft);  color: var(--warn); }
+  .p-baja  { background: var(--surface-sunk); color: var(--ink-faint); }
+  @media (max-width: 560px) {
+    .caso { grid-template-columns: 1fr auto; gap: 4px 12px; }
+    .caso-id { grid-column: 1 / -1; }
+  }
+
+  /* ---------- hallazgo destacado ---------- */
+  .hallazgo {
+    background: var(--surface);
+    border-left: 3px solid var(--crit);
+    padding: 22px 24px;
+    border-radius: 0 3px 3px 0;
+  }
+  .hallazgo dl { margin: 0; display: grid; gap: 14px; }
+  .hallazgo dt {
+    font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 3px;
+  }
+  .hallazgo dd { margin: 0; font-size: 15px; color: var(--ink); }
+
+  /* ---------- herramientas ---------- */
+  .tools { display: grid; gap: 18px; }
+  .tool-row { display: grid; grid-template-columns: 170px 1fr; gap: 6px 18px; }
+  .tool-row dt {
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--accent);
+    padding-top: 2px;
+  }
+  .tool-row dd { margin: 0; color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 560px) { .tool-row { grid-template-columns: 1fr; } }
+
+  /* ---------- repos ---------- */
+  .repo {
+    display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--rule); border-radius: 3px;
+    padding: 20px 22px; background: var(--surface);
+    margin-bottom: 12px;
+    transition: border-color .15s ease;
+  }
+  .repo:hover, .repo:focus-visible { border-color: var(--accent); }
+  .repo-n { font-family: var(--mono); font-size: 14.5px; color: var(--accent); margin-bottom: 5px; }
+  .repo-d { font-size: 15px; color: var(--ink-soft); }
+
+  .nota {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px; color: var(--ink-faint);
+    max-width: 64ch;
+  }
+  footer {
+    margin-top: 72px; padding-top: 26px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 13px; color: var(--ink-faint);
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  /* ---------- caso de punta a punta ---------- */
+  .ticket-head {
+    display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline;
+    font-family: var(--mono); font-size: 13px; color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .ticket-head strong { color: var(--ink); font-weight: 500; }
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--rule); }
+  .timeline li { position: relative; padding: 0 0 18px 22px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before {
+    content: ''; position: absolute; left: -6px; top: 7px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--ground); border: 2px solid var(--accent);
+  }
+  .timeline li.fin::before { background: var(--accent); }
+  .t-when { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: .02em; }
+  .t-what { font-weight: 600; font-size: 15.5px; margin: 1px 0 2px; }
+  .t-det { font-size: 15px; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- mensajes ---------- */
+  .msg { border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); margin-bottom: 18px; overflow: hidden; }
+  .msg-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 12px 18px; background: var(--surface-sunk); border-bottom: 1px solid var(--rule); }
+  .msg-tit { font-weight: 600; font-size: 15px; }
+  .msg-ch { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; }
+  .msg-body { padding: 16px 18px 6px; }
+  .cliente { font-size: 15px; color: var(--ink-soft); font-style: italic; margin: 0 0 12px; padding-left: 12px; border-left: 2px solid var(--warn); }
+  .resp { font-size: 15px; margin: 0 0 10px; }
+  .resp p { margin: 0 0 8px; max-width: none; }
+  .porque { margin: 0; max-width: none; padding: 12px 18px 14px; border-top: 1px dashed var(--rule); font-size: 14px; color: var(--ink-soft); }
+  .porque b { color: var(--accent); font-weight: 600; }
+
+  /* ---------- indicadores ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+  .kpi { background: var(--surface); padding: 16px 16px 14px; }
+  .kpi-n { font-family: var(--display); font-weight: 600; font-size: 30px; line-height: 1.1; color: var(--ink); }
+  .kpi-l { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; line-height: 1.4; }
+  @media (max-width: 560px) { .kpis { grid-template-columns: repeat(2, 1fr); } .kpi-n { font-size: 26px; } }
+
+  /* ---------- antes y después ---------- */
+  .ba-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); }
+  table.ba { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+  table.ba th { text-align: left; font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--rule); background: var(--surface-sunk); }
+  table.ba td { padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  table.ba tr:last-child td { border-bottom: 0; }
+  .antes { color: var(--crit); font-family: var(--mono); font-size: 13px; }
+  .despues { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+  .regla { color: var(--ink-soft); }
+
+  /* ---------- descargas ---------- */
+  .files { display: grid; gap: 12px; margin-top: 22px; }
+  .file {
+    display: grid; grid-template-columns: 54px 1fr; gap: 0 16px; align-items: center;
+    text-decoration: none; color: inherit;
+    border: 1px solid var(--rule); border-radius: 3px; padding: 16px 20px; background: var(--surface);
+    transition: border-color .15s ease;
+  }
+  .file:hover, .file:focus-visible { border-color: var(--accent); }
+  .ext { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-align: center; padding: 8px 0; border-radius: 2px; background: var(--accent-soft); color: var(--accent); }
+  .file-n { font-weight: 600; font-size: 15.5px; }
+  .file-d { font-size: 14.5px; color: var(--ink-soft); }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Back office · Atención al cliente</p>
+  <h1>Anyela Dávila</h1>
+  <p class="tagline">
+    Diez años recibiendo, ordenando y resolviendo solicitudes de clientes y de equipos
+    internos en banca y SaaS. Cada caso registrado, seguido y cerrado con evidencia.
+  </p>
+  <div class="meta">
+    <span>Valencia, Venezuela</span>
+    <a href="mailto:anyela.kd@gmail.com">anyela.kd@gmail.com</a>
+    <a href="https://www.linkedin.com/in/anyela-davila-9795a0105/">LinkedIn</a>
+    <a href="https://anyelakd-ux.github.io/portafolio-qa/">Portafolio QA</a>
+  </div>
+
+  <section>
+    <h2>Qué hago</h2>
+    <p class="sub">
+      Soy el punto donde llegan los pedidos, los reclamos y los datos, y me encargo de que
+      ninguno se pierda.
+    </p>
+    <dl class="tools">
+      <div class="tool-row">
+        <dt>Gestión de casos</dt>
+        <dd>Más de 2.200 solicitudes e incidencias gestionadas de punta a punta en una
+        plataforma SaaS de hotelería con clientes en varios países: registro, clasificación,
+        prioridad, seguimiento y cierre.</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Atención a clientes</dt>
+        <dd>Clientes del sector financiero: reuniones para entender lo que necesitaban y
+        seguimiento de cada requerimiento en un sistema de tickets (OTRS).</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Demanda interna</dt>
+        <dd>En banca, recibí y ordené las solicitudes de todas las áreas hacia Tecnología:
+        análisis, clasificación, asignación y seguimiento.</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Administración</dt>
+        <dd>Facturación, inventario, ventas, procesos administrativos y bases de datos.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Cómo trabajo</h2>
+    <p class="sub">Cuatro reglas que aplico con cada cliente y con cada caso.</p>
+
+    <div class="principio">
+      <div class="tick"></div>
+      <div>
+        <h3>Respondo rápido, aunque todavía no tenga la solución</h3>
+        <p>El cliente necesita saber que lo escuchamos, qué va a pasar y cuándo vuelve a
+        saber de nosotros. El silencio es lo que convierte una molestia en un reclamo.</p>
+      </div>
+    </div>
+    <div class="principio">
+      <div class="tick"></div>
+      <div>
+        <h3>Todo queda registrado</h3>
+        <p>Si no está en el sistema, no pasó. Cada caso tiene número, fechas, responsable y
+        estado, así cualquiera del equipo puede retomarlo sin preguntarle nada al cliente.</p>
+      </div>
+    </div>
+    <div class="principio">
+      <div class="tick"></div>
+      <div>
+        <h3>Escalo con los datos completos</h3>
+        <p>Cuando un caso pasa a otra área, va con todo lo que necesitan para actuar: qué
+        pasó, a quién, cuándo, cuánto y la evidencia. Un escalamiento incompleto vuelve y
+        el cliente espera el doble.</p>
+      </div>
+    </div>
+    <div class="principio">
+      <div class="tick"></div>
+      <div>
+        <h3>Cierro con el cliente, no con el sistema</h3>
+        <p>Un caso está cerrado cuando el cliente confirmó que se resolvió, no cuando otra
+        área dice que ya lo hizo. Antes de cerrar, verifico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Un caso de punta a punta</h2>
+    <p class="sub">
+      Un cobro duplicado, desde el primer mensaje hasta el cierre. Sale del control de
+      solicitudes de ejemplo que está más abajo.
+    </p>
+    <div class="ticket-head">
+      <strong>SOL-0118</strong><span>Facturación</span><span>Prioridad alta</span><span>Correo</span>
+    </div>
+    <ol class="timeline">
+      <li>
+        <div class="t-when">Martes 13 · 9:20 a. m.</div>
+        <div class="t-what">Llega el reclamo</div>
+        <p class="t-det">José escribe: le cobraron dos veces su pedido de USD 45,00 y adjunta la
+        captura de su estado de cuenta.</p>
+      </li>
+      <li>
+        <div class="t-when">Martes 13 · 10:05 a. m.</div>
+        <div class="t-what">Registro, clasificación y primera respuesta</div>
+        <p class="t-det">Creo el caso, lo clasifico como Facturación con prioridad alta porque hay
+        dinero del cliente cobrado de más, y le respondo con el número de caso, el próximo paso y
+        cuándo le vuelvo a escribir. Tiempo de primera respuesta: 45 minutos.</p>
+      </li>
+      <li>
+        <div class="t-when">Martes 13 · 10:20 a. m.</div>
+        <div class="t-what">Verifico y escalo a Finanzas</div>
+        <p class="t-det">Cruzo el pedido con los cobros registrados y confirmo los dos cargos.
+        Escalo a Finanzas con la plantilla completa: cliente, pedido, cargos, monto a reversar y
+        evidencia.</p>
+      </li>
+      <li>
+        <div class="t-when">Miércoles 14 · 11:30 a. m.</div>
+        <div class="t-what">Aviso al cliente</div>
+        <p class="t-det">Finanzas confirma el reverso. Le escribo a José, como le prometí, con el
+        comprobante y el plazo en que lo verá en su banco.</p>
+      </li>
+      <li class="fin">
+        <div class="t-when">Jueves 15 · 3:30 p. m.</div>
+        <div class="t-what">Cierre</div>
+        <p class="t-det">José confirma que ve el reverso. Registro la causa (doble clic en el pago),
+        cierro el caso y él califica la atención con 5 de 5.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Cómo le escribo a un cliente</h2>
+    <p class="sub">
+      Cuatro situaciones frecuentes. En todas: reconocer lo que pasó, decir qué ya hice y
+      comprometerme con un próximo paso concreto.
+    </p>
+
+    <article class="msg">
+      <div class="msg-top"><span class="msg-tit">Pedido retrasado</span><span class="msg-ch">WhatsApp</span></div>
+      <div class="msg-body">
+        <p class="cliente">"Mi pedido tenía que llegar ayer y nada. ¿Qué pasó?"</p>
+        <div class="resp">
+          <p>Hola, Rosa. Entiendo tu molestia: esperabas tu pedido ayer y no llegó. Ya revisé el
+          despacho del pedido #48213: está detenido en la agencia de transporte porque el número de
+          casa quedó mal escrito. Lo corregí y la agencia confirmó la entrega para mañana entre
+          9:00 a. m. y 1:00 p. m.</p>
+          <p>Mañana a las 2:00 p. m. te escribo para confirmar que lo recibiste.</p>
+        </div>
+      </div>
+      <p class="porque"><b>Por qué funciona:</b> no pide disculpas en abstracto. Da la causa, lo
+      que ya se hizo y una hora concreta para volver a escribir.</p>
+    </article>
+
+    <article class="msg">
+      <div class="msg-top"><span class="msg-tit">Cobro duplicado</span><span class="msg-ch">Correo</span></div>
+      <div class="msg-body">
+        <p class="cliente">"Me cobraron dos veces el mismo pedido. Necesito que me devuelvan el dinero."</p>
+        <div class="resp">
+          <p><b>Asunto:</b> Tu caso SOL-0118: cobro duplicado</p>
+          <p>Hola, José:</p>
+          <p>Gracias por escribirnos y por enviar la captura. Confirmo que en tu tarjeta aparecen
+          dos cargos de USD 45,00 por el pedido #50377.</p>
+          <p>Ya pasé el caso a nuestro equipo de Finanzas para que reverse el cargo duplicado.
+          Ellos responden en un día hábil, así que mañana miércoles te escribo con la confirmación.
+          Ten en cuenta que el reverso tarda de 3 a 5 días hábiles en verse en tu estado de cuenta,
+          según tu banco.</p>
+          <p>Si necesitas algo mientras tanto, responde a este correo.</p>
+          <p>Saludos,<br>Anyela · Atención al cliente</p>
+        </div>
+      </div>
+      <p class="porque"><b>Por qué funciona:</b> el número de caso va en el asunto, el cliente sabe
+      qué se hizo, quién lo está resolviendo, cuándo le vuelven a escribir y cuánto tarda su banco.
+      Nada queda en el aire.</p>
+    </article>
+
+    <article class="msg">
+      <div class="msg-top"><span class="msg-tit">Cliente molesto que quiere irse</span><span class="msg-ch">Correo</span></div>
+      <div class="msg-body">
+        <p class="cliente">"Es la tercera vez que escribo y nadie me resuelve. Quiero cancelar mi cuenta."</p>
+        <div class="resp">
+          <p>Hola, Carlos:</p>
+          <p>Tienes razón en estar molesto: escribiste tres veces y no recibiste una solución. Lo
+          siento.</p>
+          <p>Revisé tus tres mensajes y el problema es el mismo: el cambio de talla que pediste el
+          2 de octubre no quedó registrado. Hoy lo registré yo misma y la nueva talla sale mañana,
+          sin costo para ti. Desde ahora yo llevo tu caso hasta el final, para que no tengas que
+          volver a explicarlo.</p>
+          <p>Si aun así prefieres cancelar tu cuenta, respóndeme este correo y lo hago de inmediato.</p>
+        </div>
+      </div>
+      <p class="porque"><b>Por qué funciona:</b> le da la razón sin culpar a otra área, resuelve el
+      fondo, le asigna una sola persona responsable y respeta su decisión.</p>
+    </article>
+
+    <article class="msg">
+      <div class="msg-top"><span class="msg-tit">Cuando la respuesta es no</span><span class="msg-ch">Chat</span></div>
+      <div class="msg-body">
+        <p class="cliente">"Compré hace 45 días y quiero devolverlo."</p>
+        <div class="resp">
+          <p>Hola, Paola. Gracias por contarnos. Nuestra política permite devoluciones hasta 30 días
+          después de la entrega y tu pedido se entregó hace 45, así que no puedo procesarlo como
+          devolución.</p>
+          <p>Lo que sí puedo hacer: si el producto tiene una falla, está cubierto por la garantía de
+          6 meses y lo revisamos sin costo. Y si es un tema de talla o color, te ofrezco cambiarlo por
+          otro producto con el envío por nuestra cuenta. ¿Cuál de las dos te sirve más?</p>
+        </div>
+      </div>
+      <p class="porque"><b>Por qué funciona:</b> dice que no con claridad y explica la regla, pero
+      no deja al cliente sin salida: le ofrece dos opciones reales y le deja elegir.</p>
+    </article>
+  </section>
+
+  <section>
+    <h2>Control y reportes</h2>
+    <p class="sub">
+      Un mes de solicitudes de una tienda en línea, organizado en Excel. Los indicadores se
+      calculan solos a partir de cada caso registrado.
+    </p>
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-n">40</div><div class="kpi-l">solicitudes en el mes</div></div>
+      <div class="kpi"><div class="kpi-n">85 %</div><div class="kpi-l">cerradas al fin de mes</div></div>
+      <div class="kpi"><div class="kpi-n">1,6 h</div><div class="kpi-l">promedio a primera respuesta</div></div>
+      <div class="kpi"><div class="kpi-n">87,5 %</div><div class="kpi-l">dentro de la meta de 4 horas</div></div>
+      <div class="kpi"><div class="kpi-n">1,4 días</div><div class="kpi-l">promedio de resolución</div></div>
+      <div class="kpi"><div class="kpi-n">4,4 / 5</div><div class="kpi-l">satisfacción del cliente</div></div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-faint);margin-top:10px">Datos de ejemplo de una empresa ficticia.</p>
+  </section>
+
+  <section>
+    <h2>Datos limpios y verificados</h2>
+    <p class="sub">
+      Una base de 15 clientes con errores típicos de carga manual. Quedaron 13 registros: unifiqué
+      2 duplicados, estandaricé formatos y dejé 2 datos marcados para confirmar con el cliente.
+      Cada cambio quedó en un registro.
+    </p>
+    <div class="ba-wrap">
+      <table class="ba">
+        <thead><tr><th>Antes</th><th>Después</th><th>Regla aplicada</th></tr></thead>
+        <tbody>
+          <tr><td class="antes">MARIA GOMEZ</td><td class="despues">María Gómez</td><td class="regla">Nombre propio con mayúscula inicial y tildes</td></tr>
+          <tr><td class="antes">+58 412 555 0102</td><td class="despues">0412-5550102</td><td class="regla">Un solo formato de teléfono</td></tr>
+          <tr><td class="antes">ana.torres@@correo…</td><td class="despues">ana.torres@correo…</td><td class="regla">Correo con doble @</td></tr>
+          <tr><td class="antes">Vlencia</td><td class="despues">Valencia</td><td class="regla">Ciudad según lista de ciudades válidas</td></tr>
+          <tr><td class="antes">Maria Gómez (C-005)</td><td class="despues">Unificada con C-001</td><td class="regla">Duplicado: mismo correo y mismo teléfono</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Archivos</h2>
+    <p class="sub">Los documentos completos, para descargar.</p>
+    <div class="files">
+      <a class="file" href="Control-Solicitudes-Clientes.xlsx" download>
+        <span class="ext">XLSX</span>
+        <span><span class="file-n">Control de solicitudes de clientes</span><br>
+        <span class="file-d">40 casos, tablero de indicadores con gráficos, base de clientes antes y
+        después de la limpieza y registro de cambios.</span></span>
+      </a>
+      <a class="file" href="Procedimiento-Reclamos-de-Cobro.pdf">
+        <span class="ext">PDF</span>
+        <span><span class="file-n">Procedimiento: gestión de reclamos por cobro</span><br>
+        <span class="file-d">Paso a paso, responsables, metas de tiempo, lista de verificación y
+        plantilla de escalamiento.</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Herramientas</h2>
+    <dl class="tools">
+      <div class="tool-row">
+        <dt>Oficina</dt>
+        <dd>Excel (intermedio) · Access · Microsoft Project</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Tickets y tareas</dt>
+        <dd>OTRS · Jira · Azure DevOps · RTC · Trello</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Datos</dt>
+        <dd>Carga y validación de datos · Consultas en MongoDB</dd>
+      </div>
+      <div class="tool-row">
+        <dt>IA de apoyo</dt>
+        <dd>Claude · Amazon Q — para ordenar información y redactar más rápido. La revisión final
+        es siempre mía.</dd>
+      </div>
+      <div class="tool-row">
+        <dt>Idiomas</dt>
+        <dd>Español nativo · Inglés escrito intermedio</dd>
+      </div>
+    </dl>
+
+    <p class="nota">
+      Mercado Aurora es una tienda en línea ficticia creada para este portafolio: los clientes,
+      casos, políticas y datos son inventados. El trabajo que realizo para mis empleadores es
+      confidencial y no se publica bajo ninguna forma.
+    </p>
+  </section>
+
+  <footer>
+    <span>Anyela Dávila</span>
+    <a href="mailto:anyela.kd@gmail.com">anyela.kd@gmail.com</a>
+    <a href="https://www.linkedin.com/in/anyela-davila-9795a0105/">LinkedIn</a>
+    <a href="https://anyelakd-ux.github.io/portafolio-qa/">Portafolio QA</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
